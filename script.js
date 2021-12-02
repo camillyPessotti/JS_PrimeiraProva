@@ -57,7 +57,6 @@ fetch('https://prof-poke-api.herokuapp.com/api/pokedex/')
 function mostrarDados(url_icon, url_icon_2, name, id) {
     let icon = document.createElement('img');
     icon.src = url_icon;
-    icon.className = 'icon';
     icon.style.width = '50px';
     icon.style.height = '50px';
 
