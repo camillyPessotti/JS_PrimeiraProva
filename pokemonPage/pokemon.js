@@ -1,11 +1,11 @@
-let user = document.location.search;
+let pokemon = document.location.search;
 
-user = user.substring(1);
+pokemon = pokemon.substring(1);
 
 // fetch(`https://fake-github.herokuapp.com/api/search/${user}/repos`)
 //     .then(function(resultado) {
 //         resultado.json().then(function(repos) {
-//             repos.forEach(function(e) {
+//             repos.forEach(ddfunction(e) {
 //                 mostrarRepos(e.name, e.svn_url);
 //             });
 //         });

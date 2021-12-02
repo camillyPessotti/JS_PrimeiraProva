@@ -37,6 +37,7 @@ button.innerText = 'Buscar';
 buttonFiltro.appendChild(button);
 
 let divLista = document.createElement('div');
+divLista.className = 'divLista';
 main.appendChild(divLista);
 
 let lista = document.createElement('ul');
@@ -46,20 +47,38 @@ fetch('https://prof-poke-api.herokuapp.com/api/pokedex/')
     .then(function(resultado) {
         resultado.json().then(function(data) {
             data.forEach(function(e) {
-                mostrarDados(e.url_icon, e.name, e.id);
+                mostrarDados(e.url_icon, e.url_icon_2, e.name, e.id);
             });
         });
     }).catch(function(error) {
         console.log("Error: ", error);
     });
 
-function mostrarDados(url_icon, name, id) {
+function mostrarDados(url_icon, url_icon_2, name, id) {
     let icon = document.createElement('img');
-    icon.url = url_icon;
+    icon.src = url_icon;
     icon.className = 'icon';
+    icon.style.width = '50px';
+    icon.style.height = '50px';
+
+    icon.onerror = function() {
+        icon.src = url_icon_2;
+    }
 
     let linha = document.createElement('li');
-    linha.innerText = icon + " -------- " + name;
+
+    let divPokemon = document.createElement('div');
+    divPokemon.className = 'divPokemon';
+
+    divPokemon.appendChild(icon);
+
+    let nome = document.createElement('p');
+    nome.innerText = name;
+
+    divPokemon.appendChild(nome);
+
+    linha.appendChild(divPokemon);
+
     lista.appendChild(linha);
 
     let buttonId = document.createElement('button');
@@ -72,9 +91,6 @@ function mostrarDados(url_icon, name, id) {
 
     linha.appendChild(buttonId);
 
-    icon.onerror = function() {
-        icon.src = icon.url_icon_2;
-    }
 };
 
 // filter(function(e){
