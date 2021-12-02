@@ -4,6 +4,13 @@
     font-family: 'candara';
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .logo {
     padding: 10px;
     display: flex;
@@ -14,4 +21,32 @@
 .logo img {
     width: 350px;
     height: 128.4px;
+}
+
+.divNome {
+    padding: 10px;
+    font-size: 50px;
+}
+
+.divIcon {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.divPrincipal {
+    padding: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50%;
+}
+
+.divNormal {
+    padding: 5px;
+}
+
+.divEspecial {
+    padding: 5px;
 }
