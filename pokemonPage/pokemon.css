@@ -1,0 +1,18 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-size: 16px;
+    font-family: 'Candara';
+}
+
+.logo {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img {
+    width: 350px;
+    height: 128.4px;
+}
