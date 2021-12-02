@@ -9,7 +9,6 @@ let imagem = document.createElement("img");
 imagem.src = "https://logodownload.org/wp-content/uploads/2017/08/pokemon-logo.png";
 logo.appendChild(imagem);
 
-
 let main = document.querySelector('main');
 
 let principal = document.createElement('div');
@@ -31,69 +30,85 @@ let buttonFiltro = document.createElement('div');
 buttonFiltro.className = 'buttonFiltro';
 principal.appendChild(buttonFiltro);
 
+let buttonF = document.createElement('button');
+buttonF.innerText = 'Buscar';
+buttonFiltro.appendChild(buttonF);
 
-let button = document.createElement('button');
-button.innerText = 'Buscar';
-buttonFiltro.appendChild(button);
 
-let divLista = document.createElement('div');
-divLista.className = 'divLista';
-main.appendChild(divLista);
+buttonF.onclick = function myFunction() {
+    let input = document.getElementsByClassName('input');
+    let filter = input.value.toUpperCase();
+    let ul = document.getElementsByTagName("ul");
+    let li = ul.getElementsByTagName('li');
 
-let lista = document.createElement('ul');
-divLista.appendChild(lista);
-
-fetch('https://prof-poke-api.herokuapp.com/api/pokedex/')
-    .then(function(resultado) {
-        resultado.json().then(function(data) {
-            data.forEach(function(e) {
-                mostrarDados(e.url_icon, e.url_icon_2, e.name, e.id);
-            });
-        });
-    }).catch(function(error) {
-        console.log("Error: ", error);
-    });
-
-function mostrarDados(url_icon, url_icon_2, name, id) {
-    let icon = document.createElement('img');
-    icon.src = url_icon;
-    icon.style.width = '50px';
-    icon.style.height = '50px';
-
-    icon.onerror = function() {
-        icon.src = url_icon_2;
-    }
-
-    let linha = document.createElement('li');
-
-    let divPokemon = document.createElement('div');
-    divPokemon.className = 'divPokemon';
-
-    divPokemon.appendChild(icon);
-
-    let nome = document.createElement('p');
-    nome.innerText = name;
-
-    divPokemon.appendChild(nome);
-
-    linha.appendChild(divPokemon);
-
-    lista.appendChild(linha);
-
-    let buttonId = document.createElement('button');
-    buttonId.className = "buttonId"
-    buttonId.innerText = "Clique aqui"
-
-    buttonId.onclick = function() {
-        location.href = `./pokemonPage/pokemon.html?${id}/`;
-    }
-
-    linha.appendChild(buttonId);
-
+    for (i = 0; i < li.length; i++) {
+        let buttonF = li[i].getElementsByTagName("a")[0];
+        let txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        };
+    };
 };
 
-// filter(function(e){
-//     if(e.startwith(input.value){
-//     return e
-//     }
-// })
+function criarLista() {
+    let divLista = document.createElement('div');
+    divLista.className = 'divLista';
+    main.appendChild(divLista);
+
+    let lista = document.createElement('ul');
+    divLista.appendChild(lista);
+
+    fetch('https://prof-poke-api.herokuapp.com/api/pokedex/')
+        .then(function(resultado) {
+            resultado.json().then(function(data) {
+                data.forEach(function(e) {
+                    mostrarDados(e.url_icon, e.url_icon_2, e.name, e.id);
+                });
+            });
+        }).catch(function(error) {
+            console.log("Error: ", error);
+        });
+
+    function mostrarDados(url_icon, url_icon_2, name, id) {
+        let icon = document.createElement('img');
+        icon.src = url_icon;
+        icon.className = 'icon';
+        icon.style.width = '50px';
+        icon.style.height = '50px';
+
+        icon.onerror = function() {
+            icon.src = url_icon_2;
+        }
+
+        let linha = document.createElement('li');
+
+        let divPokemon = document.createElement('div');
+        divPokemon.className = 'divPokemon';
+
+        divPokemon.appendChild(icon);
+
+        let nome = document.createElement('p');
+        nome.innerText = name;
+
+        divPokemon.appendChild(nome);
+
+        linha.appendChild(divPokemon);
+
+        lista.appendChild(linha);
+
+        let buttonId = document.createElement('button');
+        buttonId.className = "buttonId"
+        buttonId.innerText = "Clique aqui"
+
+        buttonId.onclick = function() {
+            location.href = `./pokemonPage/pokemon.html?${id}/`;
+        }
+
+        linha.appendChild(buttonId);
+
+    };
+}
+
+criarLista();

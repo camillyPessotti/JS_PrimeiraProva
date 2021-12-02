@@ -26,8 +26,6 @@ fetch(`https://prof-poke-api.herokuapp.com/api/pokemon/${id}`)
         console.log("Error: ", error);
     });
 
-
-
 function mostrarDados(url_icon, url_icon_2, name, atk, def, atks, defs) {
     let divNome = document.createElement('div');
     divNome.className = 'divNome';
