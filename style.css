@@ -4,6 +4,10 @@
     font-family: 'candara';
 }
 
+body {
+    background-color: linear-gradient(to right, );
+}
+
 .logo {
     padding: 10px;
     display: flex;

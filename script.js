@@ -1,4 +1,6 @@
 let header = document.querySelector('header');
+const pokemonNomes = [];
+
 
 let logo = document.createElement('div');
 logo.className = 'logo';
@@ -35,22 +37,22 @@ buttonF.innerText = 'Buscar';
 buttonFiltro.appendChild(buttonF);
 
 
-// buttonF.onclick = function myFunction() {
-//     let input = document.getElementsByClassName('input');
-//     let filter = input.value.toUpperCase();
-//     let ul = document.getElementsByTagName("ul");
-//     let li = ul.getElementsByTagName('li');
+buttonF.onclick = function myFunction() {
+    // Declare variables
+    var filter, ul, li, a, i, txtValue;
+    ul = document.getElementById("listaId");
+    li = ul.getElementsByTagName('li');
 
-//     for (i = 0; i < li.length; i++) {
-//         let buttonF = li[i].getElementsByTagName("a")[0];
-//         let txtValue = a.textContent || a.innerText;
-//         if (txtValue.toUpperCase().indexOf(filter) > -1) {
-//             li[i].style.display = "";
-//         } else {
-//             li[i].style.display = "none";
-//         };
-//     };
-// };
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+        txtValue = pokemonNomes[i].name.toUpperCase();
+        if (txtValue.toUpperCase().indexOf(input.value.toLocaleUpperCase()) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+};
 
 function criarLista() {
     let divLista = document.createElement('div');
@@ -58,6 +60,7 @@ function criarLista() {
     main.appendChild(divLista);
 
     let lista = document.createElement('ul');
+    lista.id = 'listaId';
     divLista.appendChild(lista);
 
     fetch('https://prof-poke-api.herokuapp.com/api/pokedex/')
@@ -65,6 +68,7 @@ function criarLista() {
             resultado.json().then(function(data) {
                 data.forEach(function(e) {
                     mostrarDados(e.url_icon, e.url_icon_2, e.name, e.id);
+                    pokemonNomes.push({ name: e.name });
                 });
             });
         }).catch(function(error) {
@@ -103,7 +107,7 @@ function criarLista() {
         buttonId.innerText = "Clique aqui"
 
         buttonId.onclick = function() {
-            location.href = `./pokemonPage/pokemon.html?${id}/`;
+            location.href = './pokemonPage/pokemon.html?${id}/';
         }
 
         linha.appendChild(buttonId);
