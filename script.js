@@ -1,7 +1,6 @@
 let header = document.querySelector('header');
 const pokemonNomes = [];
 
-
 let logo = document.createElement('div');
 logo.className = 'logo';
 header.appendChild(logo);
@@ -10,6 +9,7 @@ header.appendChild(logo);
 let imagem = document.createElement("img");
 imagem.src = "https://logodownload.org/wp-content/uploads/2017/08/pokemon-logo.png";
 logo.appendChild(imagem);
+
 
 let main = document.querySelector('main');
 
@@ -32,20 +32,18 @@ let buttonFiltro = document.createElement('div');
 buttonFiltro.className = 'buttonFiltro';
 principal.appendChild(buttonFiltro);
 
+
 let buttonF = document.createElement('button');
 buttonF.innerText = 'Buscar';
 buttonFiltro.appendChild(buttonF);
 
 
 buttonF.onclick = function myFunction() {
-    // Declare variables
-    var filter, ul, li, a, i, txtValue;
-    ul = document.getElementById("listaId");
-    li = ul.getElementsByTagName('li');
+    let ul = document.getElementById("listaId");
+    let li = ul.getElementsByTagName('li');
 
-    // Loop through all list items, and hide those who don't match the search query
-    for (i = 0; i < li.length; i++) {
-        txtValue = pokemonNomes[i].name.toUpperCase();
+    for (let i = 0; i < li.length; i++) {
+        let txtValue = pokemonNomes[i].name.toUpperCase();
         if (txtValue.toUpperCase().indexOf(input.value.toLocaleUpperCase()) > -1) {
             li[i].style.display = "";
         } else {
@@ -59,9 +57,11 @@ function criarLista() {
     divLista.className = 'divLista';
     main.appendChild(divLista);
 
+
     let lista = document.createElement('ul');
     lista.id = 'listaId';
     divLista.appendChild(lista);
+
 
     fetch('https://prof-poke-api.herokuapp.com/api/pokedex/')
         .then(function(resultado) {
@@ -84,7 +84,7 @@ function criarLista() {
 
         icon.onerror = function() {
             icon.src = url_icon_2;
-        }
+        };
 
         let linha = document.createElement('li');
 
@@ -107,12 +107,11 @@ function criarLista() {
         buttonId.innerText = "Clique aqui"
 
         buttonId.onclick = function() {
-            location.href = './pokemonPage/pokemon.html?${id}/';
-        }
+            location.href = `./pokemonPage/pokemon.html?${id}/`;
+        };
 
         linha.appendChild(buttonId);
-
     };
-}
+};
 
 criarLista();
