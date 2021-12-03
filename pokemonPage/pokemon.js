@@ -4,15 +4,19 @@ id = id.substring(1);
 
 let header = document.querySelector('header');
 
-let logo = document.createElement('div');
-logo.className = 'logo';
-header.appendChild(logo);
+function logo() {
+    let logo = document.createElement('div');
+    logo.className = 'logo';
+    header.appendChild(logo);
 
 
-let imagem = document.createElement("img");
-imagem.src = "https://logodownload.org/wp-content/uploads/2017/08/pokemon-logo.png";
-logo.appendChild(imagem);
+    let imagem = document.createElement("img");
+    imagem.src = "https://logodownload.org/wp-content/uploads/2017/08/pokemon-logo.png";
+    logo.appendChild(imagem);
 
+}
+
+logo();
 
 let main = document.querySelector('main');
 
