@@ -45,7 +45,7 @@ function mostrarDados(url_icon, url_icon_2, name, atk, def, atks, defs) {
 
     let icon = document.createElement('img')
     icon.src = url_icon;
-    icon.style.width = '50%';
+    icon.style.width = '290px';
 
     icon.onerror = function() {
         icon.src = url_icon_2;

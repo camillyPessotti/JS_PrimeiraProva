@@ -1,56 +1,64 @@
 let header = document.querySelector('header');
+
 const pokemonNomes = [];
 
-let logo = document.createElement('div');
-logo.className = 'logo';
-header.appendChild(logo);
+function criarLogo() {
+    let logo = document.createElement('div');
+    logo.className = 'logo';
+    header.appendChild(logo);
 
 
-let imagem = document.createElement("img");
-imagem.src = "https://logodownload.org/wp-content/uploads/2017/08/pokemon-logo.png";
-logo.appendChild(imagem);
+    let imagem = document.createElement("img");
+    imagem.src = "https://logodownload.org/wp-content/uploads/2017/08/pokemon-logo.png";
+    logo.appendChild(imagem);
+};
 
+criarLogo();
 
 let main = document.querySelector('main');
 
-let principal = document.createElement('div');
-principal.className = 'principal';
-main.appendChild(principal);
+function campoFiltro() {
+    let principal = document.createElement('div');
+    principal.className = 'principal';
+    main.appendChild(principal);
 
 
-let inputFiltro = document.createElement('div');
-inputFiltro.className = 'inputFiltro';
-principal.appendChild(inputFiltro);
+    let inputFiltro = document.createElement('div');
+    inputFiltro.className = 'inputFiltro';
+    principal.appendChild(inputFiltro);
 
 
-let input = document.createElement('input');
-input.placeholder = 'Buscar pokémon';
-inputFiltro.appendChild(input);
+    let input = document.createElement('input');
+    input.placeholder = 'Buscar pokémon';
+    inputFiltro.appendChild(input);
 
 
-let buttonFiltro = document.createElement('div');
-buttonFiltro.className = 'buttonFiltro';
-principal.appendChild(buttonFiltro);
+    let buttonFiltro = document.createElement('div');
+    buttonFiltro.className = 'buttonFiltro';
+    principal.appendChild(buttonFiltro);
 
 
-let buttonF = document.createElement('button');
-buttonF.innerText = 'Buscar';
-buttonFiltro.appendChild(buttonF);
+    let buttonF = document.createElement('button');
+    buttonF.innerText = 'Buscar';
+    buttonFiltro.appendChild(buttonF);
 
 
-buttonF.onclick = function myFunction() {
-    let ul = document.getElementById("listaId");
-    let li = ul.getElementsByTagName('li');
+    buttonF.onclick = function filtro() {
+        let ul = document.getElementById("listaId");
+        let li = ul.getElementsByTagName('li');
 
-    for (let i = 0; i < li.length; i++) {
-        let txtValue = pokemonNomes[i].name.toUpperCase();
-        if (txtValue.toUpperCase().indexOf(input.value.toLocaleUpperCase()) > -1) {
-            li[i].style.display = "";
-        } else {
-            li[i].style.display = "none";
+        for (let i = 0; i < li.length; i++) {
+            let txtValue = pokemonNomes[i].name.toUpperCase();
+            if (txtValue.toUpperCase().indexOf(input.value.toLocaleUpperCase()) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
         }
-    }
+    };
 };
+
+campoFiltro();
 
 function criarLista() {
     let divLista = document.createElement('div');

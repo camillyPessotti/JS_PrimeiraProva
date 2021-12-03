@@ -4,6 +4,10 @@
     font-family: 'candara';
 }
 
+body {
+    background-image: linear-gradient(to right, lightblue, white);
+}
+
 main {
     display: flex;
     flex-direction: column;
