@@ -35,22 +35,22 @@ buttonF.innerText = 'Buscar';
 buttonFiltro.appendChild(buttonF);
 
 
-buttonF.onclick = function myFunction() {
-    let input = document.getElementsByClassName('input');
-    let filter = input.value.toUpperCase();
-    let ul = document.getElementsByTagName("ul");
-    let li = ul.getElementsByTagName('li');
+// buttonF.onclick = function myFunction() {
+//     let input = document.getElementsByClassName('input');
+//     let filter = input.value.toUpperCase();
+//     let ul = document.getElementsByTagName("ul");
+//     let li = ul.getElementsByTagName('li');
 
-    for (i = 0; i < li.length; i++) {
-        let buttonF = li[i].getElementsByTagName("a")[0];
-        let txtValue = a.textContent || a.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "";
-        } else {
-            li[i].style.display = "none";
-        };
-    };
-};
+//     for (i = 0; i < li.length; i++) {
+//         let buttonF = li[i].getElementsByTagName("a")[0];
+//         let txtValue = a.textContent || a.innerText;
+//         if (txtValue.toUpperCase().indexOf(filter) > -1) {
+//             li[i].style.display = "";
+//         } else {
+//             li[i].style.display = "none";
+//         };
+//     };
+// };
 
 function criarLista() {
     let divLista = document.createElement('div');
