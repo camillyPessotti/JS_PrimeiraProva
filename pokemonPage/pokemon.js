@@ -14,7 +14,7 @@ function logo() {
     imagem.src = "https://logodownload.org/wp-content/uploads/2017/08/pokemon-logo.png";
     logo.appendChild(imagem);
 
-}
+};
 
 logo();
 
@@ -23,7 +23,7 @@ let main = document.querySelector('main');
 fetch(`https://prof-poke-api.herokuapp.com/api/pokemon/${id}`)
     .then(function(resultado) {
         resultado.json().then(function(data) {
-            mostrarDados(data.url_icon, data.url_icon_2, data.name, data.atk, data.def, data.atks, data.defs);;
+            mostrarDados(data.url_icon, data.url_icon_2, data.name, data.atk, data.def, data.atks, data.defs);
 
         });
     }).catch(function(error) {
@@ -47,13 +47,13 @@ function mostrarDados(url_icon, url_icon_2, name, atk, def, atks, defs) {
     main.appendChild(divIcon);
 
 
-    let icon = document.createElement('img')
+    let icon = document.createElement('img');
     icon.src = url_icon;
     icon.style.width = '290px';
 
     icon.onerror = function() {
         icon.src = url_icon_2;
-    }
+    };
 
     divIcon.appendChild(icon);
 
@@ -91,4 +91,4 @@ function mostrarDados(url_icon, url_icon_2, name, atk, def, atks, defs) {
     let defesaEspecial = document.createElement('p');
     defesaEspecial.innerText = 'Defesa especial: ' + defs;
     divEspecial.appendChild(defesaEspecial);
-}
+};

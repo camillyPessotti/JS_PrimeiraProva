@@ -53,8 +53,8 @@ function campoFiltro() {
                 li[i].style.display = "";
             } else {
                 li[i].style.display = "none";
-            }
-        }
+            };
+        };
     };
 };
 
@@ -111,8 +111,8 @@ function criarLista() {
         lista.appendChild(linha);
 
         let buttonId = document.createElement('button');
-        buttonId.className = "buttonId"
-        buttonId.innerText = "Clique aqui"
+        buttonId.className = "buttonId";
+        buttonId.innerText = "Clique aqui";
 
         buttonId.onclick = function() {
             location.href = `./pokemonPage/pokemon.html?${id}/`;
